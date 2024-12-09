@@ -64,37 +64,36 @@ void cameraControl(){
     // Use setPositionOrientation(Vector3 position,Vector3 lookat) to modify the ViewMatrix.
     // Hint : Use keyboard event and mouse click event to change the position of the camera.       
         
-    float moveSpeed = 0.1f; // 定義攝影機移動速度
+    float moveSpeed = 0.1f; // the speed of moving
 
-    // 使用鍵盤控制攝影機位置
+    // use keyboard
     if (keyPressed) {
         if (key == 'w' || key == 'W') {
-            cam_position.z += moveSpeed; // 向前移動
+            cam_position.z += moveSpeed; // forward
             lookat.z += moveSpeed;
         }
         if (key == 's' || key == 'S') {
-            cam_position.z -= moveSpeed; // 向後移動
+            cam_position.z -= moveSpeed; // backward
             lookat.z -= moveSpeed;
         }
         if (key == 'a' || key == 'A') {
-            cam_position.x -= moveSpeed; // 向左移動
+            cam_position.x -= moveSpeed; // left
             lookat.x -= moveSpeed;
         }
         if (key == 'd' || key == 'D') {
-            cam_position.x += moveSpeed; // 向右移動
+            cam_position.x += moveSpeed; // right
             lookat.x += moveSpeed;
         }
         if (key == 'q' || key == 'Q') {
-            cam_position.y += moveSpeed; // 向上移動
+            cam_position.y += moveSpeed; // up
             lookat.y += moveSpeed;
         }
         if (key == 'e' || key == 'E') {
-            cam_position.y -= moveSpeed; // 向下移動
+            cam_position.y -= moveSpeed; // down
             lookat.y -= moveSpeed;
         }
     }
     
-    // 更新攝影機的位置與方向
     main_camera.setPositionOrientation(cam_position, lookat);
 
 }

@@ -49,10 +49,9 @@ public class Camera {
 
         // 計算螢幕比例
         float aspect = (float) wid / hei;
+        GH_FOV = tan(GH_FOV/0.5f);
 
         projection = Matrix4.Identity();
-        GH_FOV = tan(GH_FOV/0.5f);
-        // 填寫投影矩陣 (row-major 順序)
         projection.m[0] = 1.0f / (aspect*GH_FOV); 
         projection.m[5] = 1.0f / GH_FOV;           
         projection.m[10] = -(far + near) / (far - near);
@@ -75,7 +74,6 @@ public class Camera {
         // Finally, pass the result into worldView matrix.
 
         worldView = Matrix4.Identity();
-        
         Vector3 topVector = Vector3.UnitY();
 
         // 計算方向向量
@@ -83,7 +81,6 @@ public class Camera {
         Vector3 xAxis = Vector3.unit_vector(Vector3.cross(topVector, zAxis)); // 視圖的 X 軸方向
         Vector3 yAxis = Vector3.unit_vector(Vector3.cross(zAxis, xAxis)); // 視圖的 Y 軸方向
 
-        // 構造視圖矩陣 (row-major)
         worldView.m[0] = xAxis.x;
         worldView.m[1] = yAxis.x;
         worldView.m[2] = -zAxis.x;
@@ -99,7 +96,6 @@ public class Camera {
         worldView.m[10] = -zAxis.z;
         worldView.m[11] = -(xAxis.z * pos.x + yAxis.z * pos.y - zAxis.z * pos.z);
 
-        // 平移部分
         worldView.m[12] = 0.0f;
         worldView.m[13] = 0.0f;
         worldView.m[14] = 0.0f;

@@ -77,7 +77,7 @@ public class GameObject {
             float crossProduct = (img_pos[1].x - img_pos[0].x) * (img_pos[2].y - img_pos[0].y) - (img_pos[2].x - img_pos[0].x) * (img_pos[1].y - img_pos[0].y);
     
             if (crossProduct >= 0) {
-                continue;  // Skip back-facing triangle
+                continue;  
             }
 
             for (int j = 0; j < img_pos.length; j++) {
